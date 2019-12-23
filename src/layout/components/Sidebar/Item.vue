@@ -1,4 +1,5 @@
 <script>
+// 每一个大的模块
 export default {
   name: 'MenuItem',
   functional: true,

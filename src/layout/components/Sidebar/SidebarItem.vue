@@ -1,5 +1,7 @@
 <template>
+  <!-- 包含每个大模块即item模块和link模块 -->
   <div v-if="!item.hidden" class="menu-wrapper">
+    
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
@@ -9,9 +11,11 @@
     </template>
 
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+      <!-- 每个大模块 -->
       <template slot="title">
         <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" />
       </template>
+      <!-- 遍历展示每个大模块下的所有小模块 -->
       <sidebar-item
         v-for="child in item.children"
         :key="child.path"
@@ -62,18 +66,18 @@ export default {
         if (item.hidden) {
           return false
         } else {
-          // Temp set(will be used if only has one showing child)
+          // 临时设置(如果只有一个显示的子节点，则使用临时设置)
           this.onlyOneChild = item
           return true
         }
       })
 
-      // When there is only one child router, the child router is displayed by default
+      // 当只有一个子路由器时，默认显示子路由器
       if (showingChildren.length === 1) {
         return true
       }
 
-      // Show parent if there are no child router to display
+      // 如果没有要显示的子路由器，则显示父路由器
       if (showingChildren.length === 0) {
         this.onlyOneChild = { ... parent, path: '', noShowingChildren: true }
         return true

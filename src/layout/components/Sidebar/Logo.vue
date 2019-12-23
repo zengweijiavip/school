@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar-logo-container" :class="{'collapse':collapse}">
+    <!-- 侧边栏logo模块 -->
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo">
@@ -24,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Admin Template',
+      title: '校园管理后台',
       logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
     }
   }

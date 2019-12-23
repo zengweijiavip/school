@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Vue Admin Template',
+  title: '校园管理后台',
 
   /**
    * @type {boolean} true | false
@@ -12,5 +12,23 @@ module.exports = {
    * @type {boolean} true | false
    * @description Whether show the logo in sidebar
    */
-  sidebarLogo: false
+  sidebarLogo: true,
+
+  /**
+   * 是否系统布局配置
+   */
+  showSettings: false,
+
+  /**
+   * 是否显示 tagsView
+   */
+  tagsView: true,
+
+  /**
+   * @type {string | array} 'production' | ['production', 'development']
+   * @description Need show err logs component.
+   * The default is only used in the production env
+   * If you want to also use it in dev, you can pass ['production', 'development']
+   */
+  errorLog: 'production'
 }

@@ -5,7 +5,7 @@
   "author": "Pan <panfree23@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "vue-cli-service serve",
+    "dev": "vue-cli-service serve --open",
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
     "preview": "node build/index.js --preview",
@@ -15,6 +15,7 @@
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
+    "@riophae/vue-treeselect": "^0.4.0",
     "axios": "0.18.1",
     "element-ui": "2.7.2",
     "file-saver": "^2.0.2",
@@ -26,6 +27,7 @@
     "screenfull": "^5.0.0",
     "sortablejs": "^1.10.1",
     "vue": "2.6.10",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "3.0.6",
     "vuex": "3.1.0",
     "xlsx": "^0.15.3"

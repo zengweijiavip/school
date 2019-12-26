@@ -7,7 +7,9 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 /* Router Modules */
+// 引入校区管理路由模块
 import campusRouter from './modules/campus'
+// 引入考勤管理路由模块
 import attendanceRouter from './modules/attendance'
 
 /**
@@ -81,7 +83,7 @@ export const constantRoutes = [
       }
     ]
   },
- 
+
   {
     path: '/profile',
     component: Layout,
@@ -109,13 +111,13 @@ export const asyncRoutes = [
     component: Layout,
     redirect: '/system/user',
     // will always show the root menu
-    alwaysShow: true, 
+    alwaysShow: true,
     name: 'system',
     meta: {
       title: '系统管理',
       icon: 'lock',
       // you can set roles in root nav
-      roles: ['admin', 'editor'] 
+      roles: ['admin', 'editor']
     },
     children: [
       {
@@ -124,8 +126,9 @@ export const asyncRoutes = [
         name: 'user',
         meta: {
           title: '用户管理',
+          icon: 'email',
           // or you can only set roles in sub nav
-          roles: ['admin'] 
+          roles: ['admin']
         }
       },
       {
@@ -133,7 +136,8 @@ export const asyncRoutes = [
         component: () => import('@/views/system/role/index'),
         name: 'role',
         meta: {
-          title: '角色管理'
+          title: '角色管理',
+          icon: 'dict'
           // if do not set roles, means: this page does not require permission
         }
       },
@@ -143,6 +147,7 @@ export const asyncRoutes = [
         name: 'menu',
         meta: {
           title: '菜单管理',
+          icon: 'drag',
           roles: ['admin']
         }
       },
@@ -151,15 +156,17 @@ export const asyncRoutes = [
         component: () => import('@/views/system/dept/index'),
         name: 'dept',
         meta: {
-          title: '部门管理'
+          title: '部门管理',
+          icon: 'language'
         }
-      },    
+      },
       {
         path: 'post',
         component: () => import('@/views/system/post/index'),
         name: 'post',
         meta: {
-          title: '岗位管理'
+          title: '岗位管理',
+          icon: 'fullscreen'
         }
       },
       {
@@ -167,7 +174,8 @@ export const asyncRoutes = [
         component: () => import('@/views/system/dict/index'),
         name: 'dict',
         meta: {
-          title: '字典管理'
+          title: '字典管理',
+          icon: 'message'
         }
       },
       {
@@ -175,7 +183,8 @@ export const asyncRoutes = [
         component: () => import('@/views/system/config/index'),
         name: 'config',
         meta: {
-          title: '参数管理'
+          title: '参数管理',
+          icon: 'log'
         }
       },
       {
@@ -183,14 +192,17 @@ export const asyncRoutes = [
         component: () => import('@/views/system/notice/index'),
         name: 'notice',
         meta: {
-          title: '通知公告'
+          title: '通知公告',
+          icon: 'online'
         }
       }
     ]
   },
 
   /** when your routing map is too long, you can split it into small modules **/
+  // 考勤管理路由模块
   attendanceRouter,
+  // 校区管理路由模块
   campusRouter,
 
   // 收款管理路由模块
@@ -225,14 +237,13 @@ export const asyncRoutes = [
     ]
   },
 
- 
   // 外链路由模块
   {
     path: 'external-link',
     component: Layout,
     children: [
       {
-        path: 'https://github.com/PanJiaChen/vue-element-admin',
+        path: 'https://www.baidu.com/',
         meta: { title: '校园介绍', icon: 'link' }
       }
     ]

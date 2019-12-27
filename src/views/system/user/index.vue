@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     user
+    <div>证件有效开始时间：<input type="text" placeholder="请输入年月日" style="text-align: right;border-width: 0;outline: 0"></div>
   </div>
 </template>
 

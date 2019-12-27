@@ -14,7 +14,6 @@ import attendanceRouter from './modules/attendance'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
- * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
  *
  * hidden: true                   if set true, item will not show in the sidebar(default is false)
  * alwaysShow: true               if set true, will always show the root menu
@@ -37,6 +36,8 @@ import attendanceRouter from './modules/attendance'
  * constantRoutes
  * a base page that does not have permission requirements
  * all roles can be accessed
+ * 没有权限要求的基本页
+ * 所有角色可以访问
  */
 export const constantRoutes = [
   {
@@ -103,6 +104,7 @@ export const constantRoutes = [
 /**
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
+ * 需要根据用户角色动态加载的路由
  */
 export const asyncRoutes = [
   // 系统管理路由模块
@@ -111,12 +113,14 @@ export const asyncRoutes = [
     component: Layout,
     redirect: '/system/user',
     // will always show the root menu
+    // 总是显示根菜单
     alwaysShow: true,
     name: 'system',
     meta: {
       title: '系统管理',
       icon: 'lock',
       // you can set roles in root nav
+      // 可以在根导航中设置角色
       roles: ['admin', 'editor']
     },
     children: [
@@ -128,6 +132,7 @@ export const asyncRoutes = [
           title: '用户管理',
           icon: 'email',
           // or you can only set roles in sub nav
+          // 或者只在子导航中设置角色
           roles: ['admin']
         }
       },
@@ -139,6 +144,7 @@ export const asyncRoutes = [
           title: '角色管理',
           icon: 'dict'
           // if do not set roles, means: this page does not require permission
+          // 如果不设置角色，意味着:此页面不需要权限
         }
       },
       {

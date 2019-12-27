@@ -1,6 +1,28 @@
 <template>
   <div class="app-container">
     role
+    <!-- <el-page-header @back="goBack" content="详情页面">
+    </el-page-header> -->
+    role
+    <el-collapse v-model="activeNames" @change="handleChange">
+  <el-collapse-item title="一致性 Consistency" name="1">
+    <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+    <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+  </el-collapse-item>
+  <el-collapse-item title="反馈 Feedback" name="2">
+    <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+    <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+  </el-collapse-item>
+  <el-collapse-item title="效率 Efficiency" name="3">
+    <div>简化流程：设计简洁直观的操作流程；</div>
+    <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+    <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+  </el-collapse-item>
+  <el-collapse-item title="可控 Controllability" name="4">
+    <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+    <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+  </el-collapse-item>
+</el-collapse>
   </div>
 </template>
 
@@ -15,83 +37,14 @@ import { treeselect as deptTreeselect, roleDeptTreeselect } from '@/api/system/d
 export default {
   name: 'Role',
   data() {
-    return {
-      // 遮罩层
-      loading: true,
-      // 选中数组
-      ids: [],
-      // 非单个禁用
-      single: true,
-      // 非多个禁用
-      multiple: true,
-      // 总条数
-      total: 0,
-      // 角色表格数据
-      roleList: [],
-      // 弹出层标题
-      title: '',
-      // 是否显示弹出层
-      open: false,
-      // 是否显示弹出层（数据权限）
-      openDataScope: false,
-      // 日期范围
-      dateRange: [],
-      // 状态数据字典
-      statusOptions: [],
-      // 数据范围选项
-      dataScopeOptions: [
-        {
-          value: '1',
-          label: '全部数据权限'
-        },
-        {
-          value: '2',
-          label: '自定数据权限'
-        },
-        {
-          value: '3',
-          label: '本部门数据权限'
-        },
-        {
-          value: '4',
-          label: '本部门及以下数据权限'
-        },
-        {
-          value: '5',
-          label: '仅本人数据权限'
-        }
-      ],
-      // 菜单列表
-      menuOptions: [],
-      // 部门列表
-      deptOptions: [],
-      // 查询参数
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        roleName: undefined,
-        roleKey: undefined,
-        status: undefined
-      },
-      // 表单参数
-      form: {},
-      defaultProps: {
-        children: 'children',
-        label: 'label'
-      },
-      // 表单校验
-      rules: {
-        roleName: [
-          { required: true, message: '角色名称不能为空', trigger: 'blur' }
-        ],
-        roleKey: [
-          { required: true, message: '权限字符不能为空', trigger: 'blur' }
-        ],
-        roleSort: [
-          { required: true, message: '角色顺序不能为空', trigger: 'blur' }
-        ]
+      return {
+        activeNames: ['1']
+      };
+    },
+    methods: {
+      handleChange(val) {
+        console.log(val);
       }
     }
-  }
 }
 </script>

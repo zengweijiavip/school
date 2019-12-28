@@ -7,7 +7,6 @@
       <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
       <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
     </el-tabs>
-    
   </div>
 </template>
 
@@ -15,16 +14,16 @@
 // import { listPost, getPost, delPost, addPost, updatePost, exportPost } from "@/api/system/post";
 
 export default {
-  name: "Post",
+  name: 'Post',
   data() {
     return {
-      activeName: "first"
-    };
+      activeName: 'first'
+    }
   },
   methods: {
     handleClick(tab, event) {
-      console.log(tab, event);
+      console.log(tab, event)
     }
   }
-};
+}
 </script>

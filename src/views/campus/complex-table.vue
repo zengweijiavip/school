@@ -5,8 +5,7 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
+
 import waves from '@/directive/waves' // waves directive
 // eslint-disable-next-line no-unused-vars
 import { parseTime } from '@/utils'

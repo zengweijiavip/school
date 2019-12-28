@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    menu
+    菜单
   </div>
 </template>
 

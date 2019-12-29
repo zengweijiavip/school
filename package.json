@@ -17,7 +17,7 @@
   "dependencies": {
     "@riophae/vue-treeselect": "^0.4.0",
     "axios": "0.18.1",
-    "element-ui": "2.11.1",
+    "element-ui": "^2.13.0",
     "file-saver": "^2.0.2",
     "fuse.js": "^3.4.6",
     "js-cookie": "2.2.0",
@@ -72,5 +72,5 @@
   "extends": [
     "plugin:vue/essential",
     "@vue/standard"
-]
+  ]
 }

@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     菜单
+    <!-- eslint-disable-next-line -->
   </div>
 </template>
 

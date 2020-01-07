@@ -118,7 +118,7 @@ export const asyncRoutes = [
     name: 'system',
     meta: {
       title: '系统管理',
-      icon: 'lock',
+      icon: 'jtt',
       // you can set roles in root nav
       // 可以在根导航中设置角色
       roles: ['admin', 'editor']

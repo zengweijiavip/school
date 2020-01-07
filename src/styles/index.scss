@@ -1,3 +1,8 @@
+/**
+* styles文件夹下的全局样式文件都会引入到该文件
+* 该文件会在main.js中作为全局css引入
+**/
+
 @import './variables.scss';
 @import './mixin.scss';
 @import './transition.scss';

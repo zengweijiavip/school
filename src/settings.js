@@ -1,3 +1,8 @@
+/**
+ * 全局布局样式配置文件
+ * 头部导航条、侧边栏Logo、系统布局框、tagsView、页面标题
+ */
+
 module.exports = {
 
   title: '校园管理后台',

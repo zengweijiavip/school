@@ -1,11 +1,19 @@
 <template>
   <div class="app-container">
     InlineEditTable
+    <el-form>
+      <el-form-item class="form-item">
+        <el-input placeholder="验证码">
+          <template slot="append">
+            <el-button>发送验证码</el-button>
+          </template>
+        </el-input>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'InlineEditTable',
   filters: {

@@ -1,53 +1,97 @@
 <template>
   <div class="app-container">
-    菜单
-    <!-- eslint-disable-next-line -->
+    菜单页
+    <div class="roles">
+
+    <!-- 添加角色按钮 -->
+    <el-button type="primary" style="margin:10px 0" @click="adddialogFormVisible=true">添加角色</el-button>
+    <!-- 表格 -->
+    <el-table :data="roleList" style="width: 100%" border>
+      <!-- type:expand:说明这一列后期可以展开 或  合并
+      这列的template结构就是展开行的内容
+      展开行可访问的属性与使用自定义列模板时的 Scoped slot 相同-->
+      <el-table-column type="expand">
+        <template slot-scope="scope">
+          <!-- 准备进行嵌套循环生成展开行数据展示结构 -->
+          <el-row
+            v-for="first in scope.row.children"
+            :key="first.id"
+            style="margin-bottom:10px;border-bottom:1px dashed #ccc"
+          >
+            <el-col :span="4">
+              <el-tag
+                closable
+                type="success"
+                @close="delRightById(scope.row,first.id)"
+              >{{first.authName}}</el-tag>
+            </el-col>
+            <el-col :span="20">
+              <el-row v-for="second in first.children" :key="second.id" style="margin-bottom:10px">
+                <el-col :span="4">
+                  <el-tag
+                    closable
+                    type="info"
+                    @close="delRightById(scope.row,second.id)"
+                  >{{second.authName}}</el-tag>
+                </el-col>
+                <el-col :span="20">
+                  <el-tag
+                    closable
+                    type="warning"
+                    v-for="third in second.children"
+                    :key="third.id"
+                    style="margin:0px 10px 5px 0px"
+                    @close="delRightById(scope.row,third.id)"
+                  >{{third.authName}}</el-tag>
+                </el-col>
+              </el-row>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24" v-show="scope.row.children.length == 0">没有任何的权限，请先分配！！</el-col>
+          </el-row>
+        </template>
+      </el-table-column>
+      <el-table-column type="index" width="50"></el-table-column>
+      <el-table-column prop="roleName" label="角色名称"></el-table-column>
+      <el-table-column prop="roleDesc" label="描述"></el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-tooltip class="item" effect="dark" content="编辑" placement="top">
+            <el-button type="primary" icon="el-icon-edit"></el-button>
+          </el-tooltip>
+          <el-tooltip class="item" effect="dark" content="角色授权" placement="top">
+            <el-button type="primary" icon="el-icon-d-caret" @click="showGrantDialog(scope.row)"></el-button>
+          </el-tooltip>
+          <el-tooltip class="item" effect="dark" content="删除" placement="top">
+            <el-button type="primary" icon="el-icon-delete"></el-button>
+          </el-tooltip>
+        </template>
+      </el-table-column>
+    </el-table>
+    </div>
   </div>
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import { listMenu, getMenu, treeselect, delMenu, addMenu, updateMenu } from '@/api/system/menu'
-import Treeselect from '@riophae/vue-treeselect'
-import '@riophae/vue-treeselect/dist/vue-treeselect.css'
-import IconSelect from '@/components/IconSelect'
-
 export default {
-  name: 'Menu',
-  // eslint-disable-next-line vue/no-unused-components
-  components: { Treeselect, IconSelect },
-  data() {
+  data () {
     return {
-      // 遮罩层
-      loading: true,
-      // 菜单表格树数据
-      menuList: [],
-      // 菜单树选项
-      menuOptions: [],
-      // 弹出层标题
-      title: '',
-      // 是否显示弹出层
-      open: false,
-      // 菜单状态数据字典
-      visibleOptions: [],
-      // 查询参数
-      queryParams: {
-        menuName: undefined,
-        visible: undefined
+      adddialogFormVisible: false,
+      addForm: {
+        roleName: '',
+        roleDesc: ''
       },
-      // 表单参数
-      form: {},
-      // 表单校验
-      rules: {
-        menuName: [
-          { required: true, message: '菜单名称不能为空', trigger: 'blur' }
-        ],
-        orderNum: [
-          { required: true, message: '菜单顺序不能为空', trigger: 'blur' }
-        ]
+      roleId: '',
+      grantdialogFormVisible: false,
+      checkedArr: [],
+      roleList: [],
+      rightList: [],
+      defaultProps: {
+        children: 'children',
+        label: 'authName'
       }
     }
   }
-
 }
 </script>

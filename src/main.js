@@ -6,7 +6,7 @@ import 'normalize.css/normalize.css'
 import ElementUI from 'element-ui'
 import './styles/element-variables.scss'
 // lang i18n
-import locale from 'element-ui/lib/locale/lang/en'
+// import locale from 'element-ui/lib/locale/lang/en'
 
 // global css
 import '@/styles/index.scss'
@@ -39,9 +39,9 @@ if (process.env.NODE_ENV === 'production') {
 
 // set ElementUI lang to EN
 // 将elementUi语言设置为英文
-Vue.use(ElementUI, { locale })
+// Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
-// Vue.use(ElementUI)
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 

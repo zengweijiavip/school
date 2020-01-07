@@ -1,8 +1,6 @@
 <template>
   <div class="app-container">
     role
-    <el-page-header content="详情页面" @back="goBack" />
-    role
     <el-collapse v-model="activeNames" @change="handleChange">
       <el-collapse-item title="一致性 Consistency" name="1">
         <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>

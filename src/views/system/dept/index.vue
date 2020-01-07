@@ -1,11 +1,46 @@
 <template>
   <div class="app-container">
-    dept
+    部门页
     <el-popconfirm
       title="这是一段内容确定删除吗？"
     >
       <el-button slot="reference">删除</el-button>
     </el-popconfirm>
+        <el-form :inline="true">
+      <el-form-item label="部门名称">
+        <el-input
+          v-model="queryParams.deptName"
+          placeholder="请输入部门名称"
+          clearable
+          size="small"
+        />
+      </el-form-item>
+      <el-form-item label="状态">
+        <el-select v-model="queryParams.status" placeholder="部门状态" clearable size="small">
+          <el-option
+            v-for="dict in statusOptions"
+            :key="dict.dictValue"
+            :label="dict.dictLabel"
+            :value="dict.dictValue"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          class="filter-item"
+          type="primary"
+          icon="el-icon-search"
+          size="mini"
+        >搜索</el-button>
+        <el-button
+          class="filter-item"
+          type="primary"
+          icon="el-icon-plus"
+          size="mini"
+          v-hasPermi="['system:dept:add']"
+        >新增</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
